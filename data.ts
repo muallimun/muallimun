@@ -1,0 +1,33 @@
+
+import { LetterData } from './types';
+
+export const ARABIC_LETTERS_DATA: LetterData[] = [
+  { id: 'أ', isolated: 'أ', initial: 'أ', medial: 'ـأ', final: 'ـأ', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/01_elif.mp3' },
+  { id: 'ب', isolated: 'ب', initial: 'بـ', medial: 'ـبـ', final: 'ـب', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/02_ba.mp3' },
+  { id: 'ت', isolated: 'ت', initial: 'تـ', medial: 'ـتـ', final: 'ـت', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/03_ta.mp3' },
+  { id: 'ث', isolated: 'ث', initial: 'ثـ', medial: 'ـثـ', final: 'ـث', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/04_se.mp3' },
+  { id: 'ج', isolated: 'ج', initial: 'جـ', medial: 'ـجـ', final: 'ـج', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/05_cim.mp3' },
+  { id: 'ح', isolated: 'ح', initial: 'حـ', medial: 'ـحـ', final: 'ـح', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/06_ha.mp3' },
+  { id: 'خ', isolated: 'خ', initial: 'خـ', medial: 'ـخـ', final: 'ـخ', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/07_hi.mp3' },
+  { id: 'د', isolated: 'د', initial: 'د', medial: 'ـد', final: 'ـد', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/08_dal.mp3' },
+  { id: 'ذ', isolated: 'ذ', initial: 'ذ', medial: 'ـذ', final: 'ـذ', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/09_zal.mp3' },
+  { id: 'ر', isolated: 'ر', initial: 'ر', medial: 'ـر', final: 'ـر', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/10_ra.mp3' },
+  { id: 'ز', isolated: 'ز', initial: 'ز', medial: 'ـز', final: 'ـز', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/11_ze.mp3' },
+  { id: 'س', isolated: 'س', initial: 'سـ', medial: 'ـسـ', final: 'ـس', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/12_sin.mp3' },
+  { id: 'ش', isolated: 'ش', initial: 'شـ', medial: 'ـشـ', final: 'ـش', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/13_shin.mp3' },
+  { id: 'ص', isolated: 'ص', initial: 'صـ', medial: 'ـصـ', final: 'ـص', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/14_sad.mp3' },
+  { id: 'ض', isolated: 'ض', initial: 'ضـ', medial: 'ـضـ', final: 'ـض', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/15_dad.mp3' },
+  { id: 'ط', isolated: 'ط', initial: 'طـ', medial: 'ـطـ', final: 'ـط', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/16_ta.mp3' },
+  { id: 'ظ', isolated: 'ظ', initial: 'ظـ', medial: 'ـظـ', final: 'ـظ', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/17_za.mp3' },
+  { id: 'ع', isolated: 'ع', initial: 'عـ', medial: 'ـعـ', final: 'ـع', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/18_ayn.mp3' },
+  { id: 'غ', isolated: 'غ', initial: 'غـ', medial: 'ـغـ', final: 'ـغ', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/19_gayn.mp3' },
+  { id: 'ف', isolated: 'ف', initial: 'فـ', medial: 'ـفـ', final: 'ـف', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/20_fe.mp3' },
+  { id: 'ق', isolated: 'ق', initial: 'قـ', medial: 'ـقـ', final: 'ـق', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/21_gaf.mp3' },
+  { id: 'ك', isolated: 'ك', initial: 'كـ', medial: 'ـكـ', final: 'ـك', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/22_kef.mp3' },
+  { id: 'ل', isolated: 'ل', initial: 'لـ', medial: 'ـلـ', final: 'ـل', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/23_lam.mp3' },
+  { id: 'م', isolated: 'م', initial: 'مـ', medial: 'ـمـ', final: 'ـم', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/24_mim.mp3' },
+  { id: 'ن', isolated: 'ن', initial: 'نـ', medial: 'ـنـ', final: 'ـن', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/25_nun.mp3' },
+  { id: 'ه', isolated: 'هـ', initial: 'هـ', medial: 'ـهـ', final: 'ـه', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/26_he.mp3' },
+  { id: 'و', isolated: 'و', initial: 'و', medial: 'ـو', final: 'ـو', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/27_vav.mp3' },
+  { id: 'ي', isolated: 'ي', initial: 'يـ', medial: 'ـيـ', final: 'ـي', audioUrl: 'https://ia601902.us.archive.org/4/items/elifba_tektek_harfler/28_ya.mp3' },
+];

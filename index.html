@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="description" content="لعبة تعليمية تفاعلية للأطفال لتعلم الحروف العربية">
+    <title>مغامرة الحروف - Adventure of Letters</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              slate: {
+                850: '#1e293b', 
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        --bg-color: #f0f9ff;
+        --glass-bg: rgba(255, 255, 255, 0.85);
+        --glass-border: rgba(255, 255, 255, 0.6);
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+      }
+
+      body.dark-mode {
+        --bg-color: #0f172a;
+        --glass-bg: rgba(30, 41, 59, 0.85);
+        --glass-border: rgba(51, 65, 85, 0.6);
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+      }
+
+      body {
+        font-family: 'Baloo Bhaijaan 2', sans-serif;
+        overflow: hidden;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        margin: 0;
+        padding: 0;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      .glass-panel {
+        background-color: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        transition: background-color 0.3s, border-color 0.3s;
+      }
+
+      /* --- LOADING SPINNER --- */
+      #loading-screen {
+        position: fixed;
+        inset: 0;
+        background: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #c7d2fe;
+        border-top-color: #4f46e5;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+
+      /* --- ANIMATIONS --- */
+      @keyframes swim-right-to-left {
+        0% { transform: translate(0, 0) scaleX(-1); }
+        25% { transform: translate(-40vw, -40px) rotate(5deg) scaleX(-1); }
+        50% { transform: translate(-80vw, 0) rotate(0deg) scaleX(-1); }
+        75% { transform: translate(-120vw, 40px) rotate(-5deg) scaleX(-1); }
+        100% { transform: translate(-160vw, 0) rotate(0deg) scaleX(-1); }
+      }
+
+      @keyframes grow-in {
+        0% { transform: scale(0); opacity: 0; }
+        60% { transform: scale(1.1); }
+        100% { transform: scale(1); opacity: 1; }
+      }
+
+      @keyframes float-up-high {
+        0% { transform: translateY(10vh) translateX(0); opacity: 0; }
+        10% { opacity: 1; }
+        25% { transform: translateY(-30vh) translateX(15px); }
+        50% { transform: translateY(-60vh) translateX(-15px); }
+        75% { transform: translateY(-90vh) translateX(15px); }
+        100% { transform: translateY(-120vh) translateX(0); opacity: 1; }
+      }
+
+      @keyframes pop-effect {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.4); opacity: 0.8; }
+        100% { transform: scale(2); opacity: 0; }
+      }
+      
+      @keyframes particle-fade {
+        0% { transform: translate(0, 0) scale(1); opacity: 1; }
+        100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+      }
+
+      @keyframes pop-in-bounce {
+        0% { transform: scale(0); opacity: 0; }
+        60% { transform: scale(1.2); opacity: 1; }
+        80% { transform: scale(0.9); }
+        100% { transform: scale(1); }
+      }
+      
+      @keyframes fade-out-up {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-50px); opacity: 0; }
+      }
+      
+      @keyframes float-out-up {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-100px); opacity: 0; }
+      }
+
+      .animate-swim-rl { animation-name: swim-right-to-left; animation-timing-function: linear; animation-fill-mode: forwards; }
+      .animate-grow { animation-name: grow-in; animation-duration: 0.5s; animation-timing-function: ease-out; animation-fill-mode: forwards; }
+      .animate-float { animation-name: float-up-high; animation-timing-function: linear; animation-fill-mode: forwards; }
+      .animate-pop { animation-name: pop-effect; animation-duration: 0.3s; animation-timing-function: ease-out; animation-fill-mode: forwards; }
+      .animate-entrance { animation: pop-in-bounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+      .animate-wrong { animation: fade-out-up 0.8s ease-out forwards; }
+      .animate-float-out { animation: float-out-up 1.5s ease-out forwards; }
+
+      .animate-bounce-slow { animation: bounce 2s infinite; }
+      @keyframes bounce {
+        0%, 100% { transform: translateY(-5%); }
+        50% { transform: translateY(0); }
+      }
+
+      .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+      @keyframes shake {
+        10%, 90% { transform: translate3d(-1px, 0, 0); }
+        20%, 80% { transform: translate3d(2px, 0, 0); }
+        30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+        40%, 60% { transform: translate3d(4px, 0, 0); }
+      }
+      
+      .cursor-crosshair { cursor: crosshair; }
+      
+      .particle {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: particle-fade 0.8s ease-out forwards;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+</head>
+<body>
+    <!-- LOADING SCREEN (Visible until React mounts) -->
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <h2 style="margin-top: 20px; color: #4338ca; font-weight: bold; font-size: 1.5rem;">جاري التحميل...</h2>
+    </div>
+
+    <div id="root"></div>
+</body>
+</html>
