@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { GameStateStatus, GameTheme, ThemeType, GameStats, GameLevel } from './types';
 import GameEngine from './components/GameEngine';

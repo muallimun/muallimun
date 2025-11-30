@@ -1,4 +1,3 @@
-
 /**
  * AudioManager handles all sound playback.
  * Updated to use Web Audio API for SFX ensuring sound works without external files.

@@ -1,4 +1,3 @@
-
 import { LetterData } from './types';
 
 export const ARABIC_LETTERS_DATA: LetterData[] = [

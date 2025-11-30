@@ -1,4 +1,3 @@
-
 export type ThemeType = 'sea' | 'forest' | 'sky' | 'random';
 export type GameLevel = 1 | 2; // 1: Isolated, 2: Positional
 

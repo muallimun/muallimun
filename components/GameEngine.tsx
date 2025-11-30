@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { GameTheme, GameObjectEntity, GameStats, GameLevel, LetterData } from '../types';
 import { ARABIC_LETTERS_DATA } from '../data';
@@ -647,23 +646,23 @@ const GameEngine: React.FC<GameEngineProps> = ({ theme, level, onGameOver, onExi
             >
               {isPaused ? <Play size={24} /> : <Pause size={24} />}
             </button>
-            <div className="bg-white/90 px-4 py-2 rounded-full shadow-lg font-bold text-blue-900 text-xl min-w-[80px] text-center scale-90 md:scale-100">
+            <div className="bg-white/90 px-4 py-2 rounded-full shadow-lg font-bold text-blue-900 text-xl min-w-[80px] md:min-w-[100px] text-center scale-90 md:scale-100 origin-right" style={{fontFamily: 'Baloo Bhaijaan 2'}}>
               {score}
             </div>
           </div>
 
           {/* RIGHT STATS (LIVES & TIME) */}
-          <div className="flex flex-col items-end gap-1 scale-90 md:scale-100">
+          <div className="flex flex-col items-end gap-1 scale-90 md:scale-100 origin-left">
             <div className="flex gap-1">
               {[...Array(3)].map((_, i) => (
                 <Heart 
                   key={i} 
-                  className={`w-6 h-6 ${i < lives ? 'text-red-500 fill-red-500' : 'text-gray-400 fill-gray-400'}`} 
+                  className={`w-6 h-6 md:w-8 md:h-8 ${i < lives ? 'text-red-500 fill-red-500' : 'text-gray-400 fill-gray-400'}`} 
                 />
               ))}
             </div>
-            <div className={`bg-white/90 w-12 h-12 rounded-full flex items-center justify-center border-4 shadow-lg transition-colors ${timeLeft < 5 ? 'border-red-500 text-red-600 animate-pulse' : 'border-blue-300 text-gray-700'}`}>
-               <span className="font-bold text-xl">{timeLeft}</span>
+            <div className={`bg-white/90 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center border-4 shadow-lg transition-colors ${timeLeft < 5 ? 'border-red-500 text-red-600 animate-pulse' : 'border-blue-300 text-gray-700'}`}>
+               <span className="font-bold text-xl md:text-2xl">{timeLeft}</span>
             </div>
           </div>
         </div>
